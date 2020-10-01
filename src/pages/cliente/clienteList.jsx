@@ -1,25 +1,21 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-
-import IconButton from "../template/iconButton";
+import {Link} from "react-router-dom";
+import IconButton from "../../template/iconButton";
 import {markAsDone, markAsPending, remove} from "./clienteActions";
 
 const TodoList = (props) => {
   const renderRows = () => {
     const list = props.list || [];
+
     return list.map((cliente) => (
-      <tr key={cliente._id}>
-
+      <tr key={cliente.id}>
         <td>{cliente.nome}</td>
-
         <td>
-          <IconButton
-            style="info"
-            icon="chevron-right"
-            hide={cliente.done}
-            onClick={() => props.markAsDone(cliente)}
-          ></IconButton>
+          <a href={`#/tarefas/${cliente.id}?nome=${cliente.nome}`}>
+            <IconButton style="info" icon="chevron-right" hide={cliente.done} />
+          </a>
           <IconButton
             style="warning"
             icon="undo"
@@ -42,7 +38,7 @@ const TodoList = (props) => {
       <thead>
         <tr>
           <th>Nome do Cliente</th>
-        
+
           <th className="tableActions">Tarefas</th>
         </tr>
       </thead>
@@ -51,7 +47,7 @@ const TodoList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({list: state.todo.list});
+const mapStateToProps = (state) => ({list: state.clientes.list});
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({markAsDone, markAsPending, remove}, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

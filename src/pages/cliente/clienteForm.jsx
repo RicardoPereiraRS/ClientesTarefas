@@ -2,9 +2,9 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 
-import Grid from "../template/grid";
-import IconButton from "../template/iconButton";
-import {add, changeDescription, search, clear} from "./clienteActions";
+import Grid from "../../template/grid";
+import IconButton from "../../template/iconButton";
+import {add, changeDescription, search, clear, getData} from "./clienteActions";
 
 class TodoForm extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class TodoForm extends Component {
   }
 
   componentWillMount() {
-    this.props.search();
+    this.props.getData();
   }
 
   keyHandler(e) {
@@ -57,7 +57,12 @@ class TodoForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({nomeCliente: state.todo.nomeCliente});
+const mapStateToProps = (state) => ({nomeCliente: state.clientes.nomeCliente});
+
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({add, changeDescription, search, clear}, dispatch);
+  bindActionCreators(
+    {add, changeDescription, search, clear, getData},
+    dispatch
+  );
+
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
