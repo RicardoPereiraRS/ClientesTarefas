@@ -1,6 +1,8 @@
 import axios from 'axios'
 import api from '../../services/api'
 
+let clienteId
+
 import { TAREFA_DESCRIPTION_CHANGED,TAREFAS_CLEAR, TAREFAS_GET_DATA,TAREFAS_SEARCHED } from '../../redux/tarefas/types';
 
 export const changeDescription = event => ({
@@ -14,7 +16,7 @@ export const tarefaChangeDescription = event => ({
 })
 
 export const getData = (id) => {
-   
+   clienteId=id;
     return (dispatch, getState) => {
         api.get(`/tarefas/${id}`)
             .then(resp => dispatch({ type: TAREFAS_GET_DATA, payload: resp.data }))
@@ -23,13 +25,10 @@ export const getData = (id) => {
 
 export const search = () => {
     return (dispatch, getState) => {
-        const { descricaoTarefa, originalLisTarefas } = getState().tarefas;
-
-        if (!descricaoTarefa)
-            return dispatch({ type: TAREFAS_SEARCHED, payload: originalLisTarefas });
-
-        const list = originalList.filter(item => item.descricao.toLowerCase().includes(descricaoTarefa.toLowerCase()));
-
+        const { descricaoTarefa, originalListTarefas } = getState().tarefas;
+         if (!descricaoTarefa)
+             return dispatch({ type: TAREFAS_SEARCHED, payload: originalListTarefas });
+        const list = originalListTarefas.filter(item => item.descricao.toLowerCase().includes(descricaoTarefa.toLowerCase()));
         dispatch({ type: TAREFAS_SEARCHED, payload: list });
     }
 }
@@ -41,10 +40,12 @@ export const add = (clienteId,descricaoTarefa) => {
     }
     return dispatch => {
         api.post(`/tarefas/${clienteId}`, tarefa)
-            .then(resp => dispatch(clear()))
-            .then(resp => dispatch(getData()))
+            .then(() => dispatch(clear()))
+            .then(() => dispatch(getData(clienteId)))
     }
 }
+
+
 
 export const clear = () => {
     return (dispatch, getState) => {

@@ -2,6 +2,7 @@ import axios from 'axios'
 import api from '../../services/api'
 
 import { DESCRIPTION_CHANGED, TODO_CLEAR, TODO_GET_DATA, TODO_SEARCHED } from '../../redux/clientes/types';
+import tarefasList from '../tarefas/tarefasList';
 
 export const changeDescription = event => ({
     type: DESCRIPTION_CHANGED,
@@ -24,7 +25,7 @@ export const search = () => {
 
         const list = originalList.filter(item => item.nome.toLowerCase().includes(nomeCliente.toLowerCase()));
 
-        dispatch({ type: TODO_SEARCHED, payload: list });
+       dispatch({ type: TODO_SEARCHED, payload: list });
     }
 }
 
