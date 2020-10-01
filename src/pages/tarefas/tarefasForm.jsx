@@ -13,7 +13,7 @@ import {
 } from "./tarefasActions";
 
 
-class TodoForm extends Component {
+class TarefasForm extends Component {
   constructor(props) {
     super(props);
     this.keyHandler = this.keyHandler.bind(this);
@@ -76,4 +76,4 @@ const mapDispatchToProps = (dispatch) =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
+export default connect(mapStateToProps, mapDispatchToProps)(TarefasForm);
