@@ -1,15 +1,13 @@
 import * as TYPES from './types';
 
 const INITIAL_STATE = {
-    nomeCliente:'',
+    nomeCliente: '',
     list: [],
     originalList: [],
-  //  listTarefas: [],
-  //  originalListTarefas: [],
+    //  listTarefas: [],
+    //  originalListTarefas: [],
 
-  //  descricaoTarefa: '',
-
-
+    //  descricaoTarefa: '',
 
 }
 
@@ -23,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, list: action.payload }
         case TYPES.TODO_CLEAR:
             return { ...state, nomeCliente: '' }
-          
+
         default:
             return state
     }

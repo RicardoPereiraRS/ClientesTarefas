@@ -4,7 +4,13 @@ import {bindActionCreators} from "redux";
 
 import Grid from "../../template/grid";
 import IconButton from "../../template/iconButton";
-import {add, changeDescription, search, clear, getData} from "./relatorioActions";
+import {
+  add,
+  changeDescription,
+  search,
+  clear,
+  getData,
+} from "./relatorioActions";
 
 class RelatorioForm extends Component {
   constructor(props) {
@@ -13,21 +19,20 @@ class RelatorioForm extends Component {
   }
 
   componentWillMount() {
-   
     this.props.getData();
   }
 
   keyHandler(e) {
-    const {add, clear, search, pesquisaNomeTarefa} = this.props;
+    const {add, clear, search, nomeCliente} = this.props;
     if (e.key === "Enter") {
-      e.shiftKey ? search() : add(pesquisaNomeTarefa);
+      e.shiftKey ? search() : add(nomeCliente);
     } else if (e.key === "Escape") {
       clear();
     }
   }
 
   render() {
-    const {search, pesquisaNomeTarefa} = this.props;
+    const { search, pesquisa} = this.props;
     return (
       <div role="form" className="todoForm">
         <Grid cols="12 9 10">
@@ -37,7 +42,7 @@ class RelatorioForm extends Component {
             placeholder="Pesquise por cliente ou tarefa"
             onChange={this.props.changeDescription}
             onKeyUp={this.keyHandler}
-            value={this.props.pesquisaNomeTarefa}
+            value={this.props.pesquisa}
           ></input>
         </Grid>
         <Grid cols="12 3 2">
@@ -54,12 +59,9 @@ class RelatorioForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({pesquisaNomeTarefa: state.relatorio.pesquisaNomeTarefa});
+const mapStateToProps = (state) => ({pesquisa: state.relatorio.pesquisa});
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    { changeDescription, search, clear, getData},
-    dispatch
-  );
+  bindActionCreators({changeDescription, search, clear, getData}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(RelatorioForm);

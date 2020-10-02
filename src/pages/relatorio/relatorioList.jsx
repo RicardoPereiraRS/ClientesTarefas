@@ -3,15 +3,18 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {Link} from "react-router-dom";
 import IconButton from "../../template/iconButton";
+import {getData} from "./relatorioActions";
+
+
 
 const RelatorioList = (props) => {
   const renderRows = () => {
-    const list = props.list || [];
+    const list = props.listRelatorio || [];
 
-    return list.map((tarefa,cliente) => (
+    return list.map(({}) => (
       <tr>
-        <td>{cliente.nome}</td>
-       
+        <td>{}</td>
+        <td>{}</td>
       </tr>
     ));
   };
@@ -23,7 +26,6 @@ const RelatorioList = (props) => {
           <th>Tarefa</th>
           <th className="tableActions">Cliente</th>
           <th className="tableActions">Criado em</th>
-
         </tr>
       </thead>
       <tbody>{renderRows()}</tbody>
@@ -31,9 +33,9 @@ const RelatorioList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({list: state.relatorio.list});
+const mapStateToProps = (state) => ({
+  listRelatorio: state.relatorio.listRelatorio,
+});
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({clear}, dispatch);
+  bindActionCreators({getData}, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(RelatorioList);
-
-

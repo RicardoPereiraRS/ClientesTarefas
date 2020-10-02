@@ -43,7 +43,7 @@ export const add = (clienteId,descricaoTarefa) => {
             .then(() => dispatch(clear()))
             .then(() => dispatch(getData(clienteId)))
     }
-}
+} 
 
 
 

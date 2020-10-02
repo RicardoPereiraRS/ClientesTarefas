@@ -13,19 +13,18 @@ export const getData = () => {
         api.get('/relatorio')
             .then(resp => dispatch({ type: RELATORIO_GET_DATA, payload: resp.data }))
     }
-
 }
 
 export const search = () => {
     return (dispatch, getState) => {
-        const { pesquisaNomeTarefa, originalList } = getState().relatorio;
+        const { pesquisa, originalListRelatorio } = getState().relatorio;
 
-        if (!pesquisaNomeTarefa)
-            return dispatch({ type: RELATORIO_SEARCHED, payload: originalList });
+        if (!pesquisa)
+            return dispatch({ type: RELATORIO_SEARCHED, payload: originalListRelatorio });
 
         //  const list = originalList.filter(item => item.nome.toLowerCase().includes(nomeCliente.toLowerCase()));
 
-        dispatch({ type: RELATORIO_SEARCHED, payload: list });
+        dispatch({ type: RELATORIO_SEARCHED, payload: listRelatorio });
     }
 }
 
@@ -33,9 +32,9 @@ export const search = () => {
 
 export const clear = () => {
     return (dispatch, getState) => {
-        const { originalList } = getState().relatorio;
+        const { originalListRelatorio } = getState().relatorio;
 
-        dispatch({ type: RELATORIO_SEARCHED, payload: originalList });
+        dispatch({ type: RELATORIO_SEARCHED, payload: originalListRelatorio });
 
         dispatch({ type: RELATORIO_CLEAR })
     }
