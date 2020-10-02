@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-
 import {markAsDone, markAsPending, remove} from "./tarefasActions";
 
 function formataData(date) {
@@ -10,7 +9,6 @@ function formataData(date) {
   var mm = String(data.getMonth() + 1).padStart(2, "0"); //January is 0!
   var yyyy = data.getFullYear();
   return dd + "/" + mm + "/" + yyyy;
-
 }
 
 const TodoList = (props) => {

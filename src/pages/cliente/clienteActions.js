@@ -1,4 +1,3 @@
-import axios from 'axios'
 import api from '../../services/api'
 
 import { DESCRIPTION_CHANGED, TODO_CLEAR, TODO_GET_DATA, TODO_SEARCHED } from '../../redux/clientes/types';

@@ -11,7 +11,7 @@ export const changeDescription = event => ({
 export const getData = () => {
     return (dispatch, getState) => {
         api.get('/relatorio')
-            .then(resp => dispatch({ type: RELATORIO_GET_DATA, payload: resp.data }))
+            .then(resp => dispatch({ type: RELATORIO_GET_DATA, payload: geraListaDados(resp.data) }))
     }
 }
 
@@ -22,13 +22,16 @@ export const search = () => {
         if (!pesquisa)
             return dispatch({ type: RELATORIO_SEARCHED, payload: originalListRelatorio });
 
-        //  const list = originalList.filter(item => item.nome.toLowerCase().includes(nomeCliente.toLowerCase()));
+        const list = originalListRelatorio.filter(filtrar)
+        dispatch({ type: RELATORIO_SEARCHED, payload: list });
 
-        dispatch({ type: RELATORIO_SEARCHED, payload: listRelatorio });
+        function filtrar(item) {
+            return (item.nome.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.descricao.toLowerCase().
+                    includes(pesquisa.toLowerCase()))
+        }
     }
 }
-
-
 
 export const clear = () => {
     return (dispatch, getState) => {
@@ -38,4 +41,22 @@ export const clear = () => {
 
         dispatch({ type: RELATORIO_CLEAR })
     }
+}
+
+function geraListaDados(list) {
+    let dados = [];
+    let i = 0;
+    for (i = 0; i < list.length; i++) {
+        let nome = list[i].nome;
+        let tarefa = list[i].tarefas;
+        let j = 0;
+        for (j = 0; j < tarefa.length; j++) {
+            dados.push({
+                nome: nome,
+                descricao: tarefa[j].descricao,
+                dataCriacao: tarefa[j].dataCriacao,
+            });
+        }
+    }
+    return dados;
 }
