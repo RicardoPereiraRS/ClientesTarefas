@@ -2,6 +2,7 @@ import api from '../../services/api'
 
 import { RELATORIO_DESCRIPTION_CHANGED, RELATORIO_CLEAR, RELATORIO_GET_DATA, RELATORIO_SEARCHED } from '../../redux/relatorio/types';
 import RelatorioList from '../relatorio/relatorioList';
+import tarefasList from '../tarefas/tarefasList';
 
 export const changeDescription = event => ({
     type: RELATORIO_DESCRIPTION_CHANGED,
@@ -59,3 +60,4 @@ function geraListaDados(list) {
     }
     return dados;
 }
+
