@@ -45,12 +45,11 @@ export const clear = () => {
 
 function geraListaDados(list) {
     let dados = [];
-    let i = 0;
-    for (i = 0; i < list.length; i++) {
+
+    for (let i = 0; i < list.length; i++) {
         let nome = list[i].nome;
         let tarefa = list[i].tarefas;
-        let j = 0;
-        for (j = 0; j < tarefa.length; j++) {
+        for (let j = 0; j < tarefa.length; j++) {
             dados.push({
                 nome: nome,
                 descricao: tarefa[j].descricao,
