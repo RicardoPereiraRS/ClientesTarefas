@@ -42,22 +42,7 @@ export const clear = () => {
 }
 
 function geraListaDados(list) {
-    // let dados = [];
-    // for (let i = 0; i < list.length; i++) {
-    //     let nome = list[i].nome;
-    //     let tarefa = list[i].tarefas;
-    //     for (let j = 0; j < tarefa.length; j++) {
-    //         dados.push({
-    //             nome: nome,
-    //             descricao: tarefa[j].descricao,
-    //             dataCriacao: tarefa[j].dataCriacao,
-    //         });
-    //     }
-    // }
-    // return dados
 
-
-    // refatorado
     let dados = []
     list.forEach(cliente => {
         cliente.tarefas.forEach

@@ -6,8 +6,6 @@ const RelatorioList = (props) => {
   const renderRows = () => {
     const list = props.listRelatorio || [];
 
-    //  const dados = geraListaDados(list);
-
     return list.map((tarefa) => (
       <tr>
         <td>{tarefa.descricao}</td>
