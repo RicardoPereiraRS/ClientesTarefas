@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {markAsDone, markAsPending, remove} from "./tarefasActions";
 
 function formataData(date) {
   const data=new Date(date)
@@ -11,7 +10,7 @@ function formataData(date) {
   return dd + "/" + mm + "/" + yyyy;
 }
 
-const TodoList = (props) => {
+const TarefasList = (props) => {
   const renderRows = () => {
     const list = props.listTarefas || [];
 
@@ -28,7 +27,6 @@ const TodoList = (props) => {
       <thead>
         <tr>
           <th>Descricao</th>
-
           <th className="tableActions">Criado em</th>
         </tr>
       </thead>
@@ -39,5 +37,5 @@ const TodoList = (props) => {
 
 const mapStateToProps = (state) => ({listTarefas: state.tarefas.listTarefas});
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({markAsDone, markAsPending, remove}, dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+  bindActionCreators({}, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(TarefasList);

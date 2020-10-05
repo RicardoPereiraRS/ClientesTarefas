@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {getData} from "./relatorioActions";
 
 const RelatorioList = (props) => {
   const renderRows = () => {
@@ -24,8 +23,8 @@ const RelatorioList = (props) => {
       <thead>
         <tr>
           <th>Tarefa</th>
-          <th className>Cliente</th>
-          <th className>Criado em</th>
+          <th>Cliente</th>
+          <th>Criado em</th>
         </tr>
       </thead>
       <tbody>{renderRows()}</tbody>
@@ -37,7 +36,7 @@ const mapStateToProps = (state) => ({
   listRelatorio: state.relatorio.listRelatorio,
 });
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({getData}, dispatch);
+  bindActionCreators({}, dispatch);
 
 function formataData(date) {
   const data = new Date(date);

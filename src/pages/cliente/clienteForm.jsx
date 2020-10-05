@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-
 import Grid from "../../template/grid";
 import IconButton from "../../template/iconButton";
 import {add, changeDescription, search, clear, getData} from "./clienteActions";
 
-class TodoForm extends Component {
+class ClienteForm extends Component {
   constructor(props) {
     super(props);
     this.keyHandler = this.keyHandler.bind(this);
@@ -65,4 +64,4 @@ const mapDispatchToProps = (dispatch) =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ClienteForm);

@@ -1,17 +1,15 @@
 import api from '../../services/api'
-
-import { DESCRIPTION_CHANGED, TODO_CLEAR, TODO_GET_DATA, TODO_SEARCHED } from '../../redux/clientes/types';
-import tarefasList from '../tarefas/tarefasList';
+import {CLIENTE_DESCRIPTION_CHANGED, CLIENTE_CLEAR, CLIENTE_GET_DATA, CLIENTE_SEARCHED } from '../../redux/clientes/types';
 
 export const changeDescription = event => ({
-    type: DESCRIPTION_CHANGED,
+    type: CLIENTE_DESCRIPTION_CHANGED,
     payload: event.target.value
 })
 
 export const getData = () => {
     return (dispatch, getState) => {
         api.get('/clientes')
-            .then(resp => dispatch({ type: TODO_GET_DATA, payload: resp.data }))
+            .then(resp => dispatch({ type: CLIENTE_GET_DATA, payload: resp.data }))
     }
 }
 
@@ -20,11 +18,11 @@ export const search = () => {
         const { nomeCliente, originalList } = getState().clientes;
 
         if (!nomeCliente)
-            return dispatch({ type: TODO_SEARCHED, payload: originalList });
+            return dispatch({ type: CLIENTE_SEARCHED, payload: originalList });
 
         const list = originalList.filter(item => item.nome.toLowerCase().includes(nomeCliente.toLowerCase()));
 
-       dispatch({ type: TODO_SEARCHED, payload: list });
+       dispatch({ type: CLIENTE_SEARCHED, payload: list });
     }
 }
 
@@ -41,8 +39,8 @@ export const clear = () => {
     return (dispatch, getState) => {
         const { originalList } = getState().clientes;
 
-        dispatch({ type: TODO_SEARCHED, payload: originalList });
+        dispatch({ type: CLIENTE_SEARCHED, payload: originalList });
 
-        dispatch({ type: TODO_CLEAR })
+        dispatch({ type: CLIENTE_CLEAR })
     }
 } 

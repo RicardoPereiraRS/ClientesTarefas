@@ -1,8 +1,5 @@
 import api from '../../services/api'
-
 import { RELATORIO_DESCRIPTION_CHANGED, RELATORIO_CLEAR, RELATORIO_GET_DATA, RELATORIO_SEARCHED } from '../../redux/relatorio/types';
-import RelatorioList from '../relatorio/relatorioList';
-import tarefasList from '../tarefas/tarefasList';
 
 export const changeDescription = event => ({
     type: RELATORIO_DESCRIPTION_CHANGED,
@@ -45,19 +42,33 @@ export const clear = () => {
 }
 
 function geraListaDados(list) {
-    let dados = [];
+    // let dados = [];
+    // for (let i = 0; i < list.length; i++) {
+    //     let nome = list[i].nome;
+    //     let tarefa = list[i].tarefas;
+    //     for (let j = 0; j < tarefa.length; j++) {
+    //         dados.push({
+    //             nome: nome,
+    //             descricao: tarefa[j].descricao,
+    //             dataCriacao: tarefa[j].dataCriacao,
+    //         });
+    //     }
+    // }
+    // return dados
 
-    for (let i = 0; i < list.length; i++) {
-        let nome = list[i].nome;
-        let tarefa = list[i].tarefas;
-        for (let j = 0; j < tarefa.length; j++) {
-            dados.push({
-                nome: nome,
-                descricao: tarefa[j].descricao,
-                dataCriacao: tarefa[j].dataCriacao,
-            });
-        }
-    }
-    return dados;
+
+    // refatorado
+    let dados = []
+    list.forEach(cliente => {
+        cliente.tarefas.forEach
+            (tarefa => {
+                dados.push({
+                    nome: cliente.nome,
+                    descricao: tarefa.descricao,
+                    dataCriacao: tarefa.dataCriacao
+                })
+            })
+    })
+
+    return dados
 }
-

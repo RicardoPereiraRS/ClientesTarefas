@@ -1,11 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {Link} from "react-router-dom";
 import IconButton from "../../template/iconButton";
 import {markAsDone, markAsPending, remove} from "./clienteActions";
 
-const TodoList = (props) => {
+const ClienteList = (props) => {
   const renderRows = () => {
     const list = props.list || [];
 
@@ -50,4 +49,4 @@ const TodoList = (props) => {
 const mapStateToProps = (state) => ({list: state.clientes.list});
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({markAsDone, markAsPending, remove}, dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(ClienteList);

@@ -44,8 +44,6 @@ export const add = (clienteId,descricaoTarefa) => {
     }
 } 
 
-
-
 export const clear = () => {
     return (dispatch, getState) => {
         const { originalListTarefas } = getState().tarefas;
