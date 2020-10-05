@@ -1,6 +1,6 @@
 import React from "react";
-import Menu from "../../template/menu";
-import PageHeader from "../../template/pageHeader";
+import Menu from "../../components/menu";
+import PageHeader from "../../components/pageHeader";
 import RelatorioForm from "./relatorioForm";
 import RelatorioList from "./relatorioList";
 

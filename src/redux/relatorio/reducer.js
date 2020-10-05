@@ -4,9 +4,7 @@ const INITIAL_STATE = {
     pesquisa: '',
     listRelatorio: [],
     originalListRelatorio: [],
-    //  listTarefas: [],
-    //  originalListTarefas: [],
-
+ 
 }
 
 export default (state = INITIAL_STATE, action) => {

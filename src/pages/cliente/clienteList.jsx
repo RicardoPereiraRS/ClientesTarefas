@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import IconButton from "../../template/iconButton";
+import IconButton from "../../components/iconButton";
 import {markAsDone, markAsPending, remove} from "./clienteActions";
 
 const ClienteList = (props) => {

@@ -1,6 +1,6 @@
 import React from "react";
-import Menu from "../../template/menu";
-import PageHeader from "../../template/pageHeader";
+import Menu from "../../components/menu";
+import PageHeader from "../../components/pageHeader";
 import TarefasForm from "./tarefasForm";
 import TarefasList from "./tarefasList";
 

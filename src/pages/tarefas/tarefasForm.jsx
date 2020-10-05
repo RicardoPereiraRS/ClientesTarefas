@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import Grid from "../../template/grid";
-import IconButton from "../../template/iconButton";
+import Grid from "../../components/grid";
+import IconButton from "../../components/iconButton";
 import {
   add,
   tarefaChangeDescription,

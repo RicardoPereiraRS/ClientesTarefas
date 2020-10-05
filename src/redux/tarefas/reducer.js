@@ -1,10 +1,7 @@
 import * as TYPES from './types';
 
 const INITIAL_STATE = {
-    //  nome: '',
-    //  list: [],
-    //  originalList: [],
-
+     
     listTarefas: [],
     originalListTarefas: [],
     descricaoTarefa: '',

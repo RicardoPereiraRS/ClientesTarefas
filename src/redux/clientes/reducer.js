@@ -4,11 +4,7 @@ const INITIAL_STATE = {
     nomeCliente: '',
     list: [],
     originalList: [],
-    //  listTarefas: [],
-    //  originalListTarefas: [],
-
-    //  descricaoTarefa: '',
-
+   
 }
 
 export default (state = INITIAL_STATE, action) => {
